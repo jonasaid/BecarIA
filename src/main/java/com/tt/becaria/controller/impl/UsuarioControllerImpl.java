@@ -1,6 +1,7 @@
 package com.tt.becaria.controller.impl;
 
 import com.tt.becaria.controller.UsuarioController;
+import com.tt.becaria.model.UsuarioTemporal;
 import com.tt.becaria.service.impl.UsuarioServiceImpl;
 import com.tt.becaria.model.ResponseData;
 import com.tt.becaria.model.Usuario;
@@ -88,7 +89,7 @@ public class UsuarioControllerImpl implements UsuarioController {
      *         estado "error", el código HTTP correspondiente y un mensaje de error.
      */
     @PostMapping("/usuario")
-    public ResponseData createUsuario(@RequestBody Usuario usuario) {
+    public ResponseData createUsuario(@RequestBody UsuarioTemporal usuario) {
         boolean success = controller.nuevoUsuario(usuario);
         if (success) {
             return new ResponseData("success", HttpStatus.CREATED.value(), usuario);
