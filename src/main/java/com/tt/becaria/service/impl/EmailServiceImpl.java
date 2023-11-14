@@ -29,7 +29,6 @@ public class EmailServiceImpl implements EmailService {
      *
      * @param javaMailSender El JavaMailSender utilizado para enviar correos electrónicos.
      */
-    @Autowired
     public EmailServiceImpl(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
@@ -61,7 +60,7 @@ public class EmailServiceImpl implements EmailService {
     }
 
     /**
-     * Envía un correo electrónico a el mail que esta configurado en applocation.properties con un asunto fijo y contenido dado.
+     * Envía un correo electrónico a el mail que esta configurado en application.properties con un asunto fijo y contenido dado.
      *
      * @param remitente    El remitente del correo electrónico.
      * @param contenido    El contenido del correo electrónico.
@@ -72,7 +71,7 @@ public class EmailServiceImpl implements EmailService {
             // true para contenido multipart (HTML y texto)
             MimeMessageHelper mensaje = new MimeMessageHelper(correo, true);
             mensaje.setTo(correoDestinatario);
-            mensaje.setSubject("BecarIA. Codigo de validación");
+            mensaje.setSubject("BecarIA");
             mensaje.setText(contenido,true);
 
             javaMailSender.send(correo);
